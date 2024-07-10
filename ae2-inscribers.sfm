@@ -1,0 +1,54 @@
+-- Tested with 16 inscribers, 8 for printing and 8 for circuits
+-- The inscribers were both AE2 and ExtendedAE
+-- with this, ae2 recipes must be split, 1 for printed and 1 for circuits
+-- if you want 1 gold, 1 silicon and 1 redstone to become a logic circuit, you need to change the ouput from Print_Inscribers from "Output" to Inscribers_Input
+name "AE2 Inscribers"
+
+every 20 ticks do
+
+    input from Inscribers_Input
+
+    output 10 certus_quartz_crystal,
+           10 gold_ingot,
+           10 diamond,
+           10 silicon,
+           10 sky_steel_ingot to each Print_Inscribers SLOTS 2,6,10,14
+    output 4 "printed_(?!silicon\b)\w+" to each Circuit_Inscribers SLOTS 1, 5, 9, 13
+    output 4 "(redstone|fluix_dust)" to each Circuit_Inscribers SLOTS 2, 6, 10, 14
+    output 4 printed_silicon to each Circuit_Inscribers SLOTS 0, 4, 8, 12
+    output 1 *press* to each Print_Inscribers SLOTS 1,5,9,13
+
+FORGET
+
+    input printed_* from Print_Inscribers north side
+    output to "Output"
+
+FORGET
+
+    input *processor* from Circuit_Inscribers north side
+    output to "Output"
+end
+
+every 200 ticks do
+    -- cleanup partially filled inscribers
+    if some Circuit_Inscribers SLOTS 0 has < 1
+    or some Circuit_Inscribers SLOTS 1 has < 1
+    or some Circuit_Inscribers SLOTS 2 has < 1
+    or some Circuit_Inscribers SLOTS 4 has < 1
+    or some Circuit_Inscribers SLOTS 5 has < 1
+    or some Circuit_Inscribers SLOTS 6 has < 1
+    or some Circuit_Inscribers SLOTS 8 has < 1
+    or some Circuit_Inscribers SLOTS 9 has < 1
+    or some Circuit_Inscribers SLOTS 10 has < 1
+    or some Circuit_Inscribers SLOTS 12 has < 1
+    or some Circuit_Inscribers SLOTS 13 has < 1
+    or some Circuit_Inscribers SLOTS 14 has < 1
+    then
+        input from Circuit_Inscribers
+        output to Inscribers_Buffer
+    end
+
+FORGET
+        input from Inscribers_Buffer
+        output to Inscribers_Input
+end
