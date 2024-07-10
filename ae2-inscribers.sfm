@@ -2,6 +2,7 @@
 -- The inscribers were both AE2 and ExtendedAE
 -- with this, ae2 recipes must be split, 1 for printed and 1 for circuits
 -- if you want 1 gold, 1 silicon and 1 redstone to become a logic circuit, you need to change the ouput from Print_Inscribers from "Output" to Inscribers_Input
+-- This also uses the "universal press" from KubeJS. If you don't have that, you need to add logic for which inscriber to use for each printed item
 name "AE2 Inscribers"
 
 every 20 ticks do
