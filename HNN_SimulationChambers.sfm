@@ -1,0 +1,14 @@
+-- tested with 20+ simulation chambers
+name "Simulation Chambers"
+
+every 20 ticks do
+    input from Prediction_Input
+    output to each Simulation_Chambers
+FORGET
+    input from each Simulation_Chambers
+    output to "Output"
+FORGET
+    -- remember to change the side to the correct one in your setup
+    input fe:: from Power_Input north side
+    output fe:: to each Simulation_Chambers
+end
