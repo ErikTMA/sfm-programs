@@ -1,0 +1,17 @@
+-- You need to block the pattern provider, so it only inputs a single craft at a time to the input chest.
+name "Mystical Aggriculture Infusion"
+
+every 20 ticks do
+    input from Infusion_Altar
+    output to "Output"
+FORGET
+    input from MysticalAggriculture_Input
+    if MysticalAggriculture_Input has eq 1 *seed_base* then
+        output 1 *seed_base* to Infusion_Altar
+        output 1 except *seed_base* to each Infusion_Pedestals
+    end
+    if MysticalAggriculture_Input has eq 1 *augment* then
+        output 1 *augment* to Infusion_Altar
+        output 1 except *augment* to each Infusion_Pedestals
+    end
+end
