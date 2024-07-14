@@ -1,0 +1,22 @@
+name "Sieve the world"
+
+every 20 ticks do
+    input from each Sieves_Output
+    output to "Output"
+forget
+    input from Sieves_Input
+    output cobblestone to each Cobblestone_Hammers
+    output soul_sand to each SoulSand_Sieves
+    output netherrack to each Netherrack_Hammers
+    output cobbled_deepslate to each CobbledDeepslate_Hammers
+    output dirt to each Dirt_Sieves
+    output blackstone to each Blackstone_Hammers
+    output moss_block to each Moss_Sieves
+    output end_stone to each EndStone_Hammers
+end
+
+every 1 ticks do
+    input fe:: from Power_Input east side
+    output fe:: to each Hammers
+    output fe:: to each Sieves
+end
