@@ -1,0 +1,86 @@
+--enriched_diamond: 80
+--diamond_dust: 10
+--- alloy_infused = 20
+--- dust_obsidian = 10
+
+--enriched_carbon: 80
+--charcoal_block: 180
+--coal: 10
+--dust_coal: 10
+--charcoal: 20
+--dust_charcoal: 20
+--- gold_dust = 10
+--- iron_block_1x = 1620
+--- iron_ingot = 10
+--- enriched_iron = 10
+
+--enriched_redstone: 80
+--redstone_block: 90
+--redstone: 10
+--- iron_ingot = 10
+--- quartz = 80
+--- osmium_ingot = 20
+
+--enriched_refined_obsidian: 80
+--dust_refined_obsidian: 10
+--- alloy_reinforced = 40
+
+--enriched_gold: 80
+--dust_gold: 10
+--- netherite_scrap = 40
+--- blackstone = 100
+
+--enriched_tin: 80
+--tin_dust: 10
+--- copper_dust = 10
+--- copper_ingot = 10
+
+
+
+name "Mekanism"
+
+-- Infusers
+every 20 ticks do
+--     input from Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers bottom side
+--     output to "Output"
+-- forget
+    -- input from Infusion_Extra_Input
+    -- output mekanism:enriched_diamond, alltheores:diamond_dust to each Diamond_Infusers west side
+    -- output mekanism:enriched_carbon, thermal:charcoal_block, coal, mekanism:dust_coal, charcoal, mekanism:dust_charcoal to each Carbon_Infusers west side
+    -- output mekanism:enriched_redstone, redstone_block, "redstone" to each Redstone_Infusers west side
+    -- output mekanism:enriched_refined_obsidian, mekanism:dust_refined_obsidian to each Refined_Obsidian_Infusers west side
+    -- output mekanism:enriched_gold, alltheores:gold_dust to each Gold_Infusers west side
+    -- output mekanism:enriched_tin, alltheores:tin_dust to each Tin_Infusers west side
+-- forget
+    input from Infusion_Input
+    output dust_obsidian to each Diamond_Infusers top side
+--     -- output mekanism:alloy_infused, mekanism:dust_obsidian to each Diamond_Infusers top side
+--     -- output iron_block_1x, alltheores:gold_dust, iron_ingot, mekanism:enriched_iron to each Carbon_Infusers top side
+--     -- output iron_ingot, quartz, mekanism:osmium_ingot to each Redstone_Infusers top side
+--     -- output mekanism:alloy_reinforced to each Refined_Obsidian_Infusers top side
+--     -- output netherite_scrap, blackstone to each Gold_Infusers top side
+--     -- output alltheores:copper_dust, copper_ingot to each Tin_Infusers top side
+-- end
+
+-- -- Enrichers
+-- every 20 ticks do
+--     input from Enrichers bottom side
+--     output to "Output"
+-- forget
+--     input from Enrichers_Input
+--     output to each Enrichers top side
+-- end
+
+-- -- Crushers
+-- every 20 ticks do
+--     input from Crushers bottom side
+--     output to "Output"
+-- forget
+--     input from Crushers_Input
+--     output to each Crushers top side
+-- end
+
+-- every 1 ticks do
+--     input fe:: from Power_Input top side
+--     output fe:: to Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, Enrichers, Crushers bottom side
+end
