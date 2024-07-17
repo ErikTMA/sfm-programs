@@ -1,0 +1,14 @@
+name "Powah! Reactors"
+
+every 5 seconds do
+    input from Reactors_Input
+    output to each Reactors
+forget
+    input fluid:minecraft:water from Reactors_Water
+    output fluid:minecraft:water to each Reactors
+end
+
+every 1 ticks do
+    input fe:: from Reactors
+    output fe:: to Power_Output bottom side
+end

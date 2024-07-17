@@ -1,0 +1,95 @@
+--enriched_diamond: 80
+--diamond_dust: 10
+--- alloy_infused = 20
+--- dust_obsidian = 10
+
+--enriched_carbon: 80
+--charcoal_block: 180
+--coal: 10
+--dust_coal: 10
+--charcoal: 20
+--dust_charcoal: 20
+--- gold_dust = 10
+--- iron_block_1x = 1620
+--- iron_ingot = 10
+--- enriched_iron = 10
+
+--enriched_redstone: 80
+--redstone_block: 90
+--redstone: 10
+--- iron_ingot = 10
+--- quartz = 80
+--- osmium_ingot = 20
+
+--enriched_refined_obsidian: 80
+--dust_refined_obsidian: 10
+--- alloy_reinforced = 40
+
+--enriched_gold: 80
+--dust_gold: 10
+--- netherite_scrap = 40
+--- blackstone = 100
+
+--enriched_tin: 80
+--tin_dust: 10
+--- copper_dust = 10
+--- copper_ingot = 10
+
+
+
+name "Mekanism Processing"
+
+-- Infusers
+every 20 ticks do
+    input from Infusion_Extra_Input
+    output enriched_diamond, diamond_dust to each Diamond_Infusers west side
+    output enriched_carbon, charcoal_block, coal, dust_coal, charcoal, dust_charcoal to each Carbon_Infusers west side
+    output enriched_redstone, redstone_block, "redstone" to each Redstone_Infusers west side
+    output enriched_refined_obsidian, dust_refined_obsidian to each Refined_Obsidian_Infusers west side
+    output enriched_gold, dust_gold to each Gold_Infusers west side
+    output enriched_tin, tin_dust to each Tin_Infusers west side
+forget
+    input from Infusion_Input
+    output alloy_infused, dust_obsidian to each Diamond_Infusers top side
+    output iron_block_1x, gold_dust, enriched_iron to each Carbon_Infusers top side
+    output iron_ingot, quartz, osmium_ingot to each Redstone_Infusers top side
+    output alloy_reinforced to each Refined_Obsidian_Infusers top side
+    output netherite_scrap, blackstone to each Gold_Infusers top side
+    output copper_dust, copper_ingot to each Tin_Infusers top side
+end
+
+-- Enrichers
+every 20 ticks do
+    input from Enrichers_Input
+    output 32 to each Enrichers top side
+end
+
+-- Crushers
+every 20 ticks do
+    input from Crushers_Input
+    output to each Crushers top side
+end
+
+every 1 ticks do
+    input fe:: from Power_Input bottom side
+    output fe:: to each Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, Enrichers, Crushers, Compressors bottom side
+end
+
+-- Compressors
+every 20 ticks do
+    input from Compressor_Input
+    output osmium_ingot to each Compressors west side
+    output to each Compressors top side
+end
+
+
+
+
+
+
+
+-- Collect
+every 20 ticks do
+    input from each Enrichers, Crushers, Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, Compressors bottom side
+    output to "Output"
+end

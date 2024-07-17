@@ -15,13 +15,13 @@ every 20 ticks do
            10 silicon,
            10 sky_steel_ingot to each Print_Inscribers SLOTS 2,6,10,14
     output 4 "printed_(?!silicon\b)\w+" to each Circuit_Inscribers SLOTS 1, 5, 9, 13
-    output 4 "(redstone|fluix_dust)" to each Circuit_Inscribers SLOTS 2, 6, 10, 14
+    output 4 "(redstone|fluix_dust|ender_pearl)" to each Circuit_Inscribers SLOTS 2, 6, 10, 14
     output 4 printed_silicon to each Circuit_Inscribers SLOTS 0, 4, 8, 12
     output 1 *press* to each Print_Inscribers SLOTS 1,5,9,13
 
 FORGET
 
-    input printed_* from Print_Inscribers north side
+    input printed_*,ender_dust from Print_Inscribers north side
     output to "Output"
 
 FORGET

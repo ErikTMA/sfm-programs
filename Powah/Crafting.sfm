@@ -1,0 +1,10 @@
+-- This will not work correctly, until we can specify only outputting to empty containers
+name "Powah! Crafting"
+
+every 20 ticks do
+    input from Energizers bottom side
+    output to each "Output"
+forget
+    input from Energizing_Input
+        output to Energizers round robin by block top side
+end
