@@ -67,7 +67,7 @@ end
 -- Crushers
 every 20 ticks do
     input from Crushers_Input
-    output to each Crushers top side
+    output 9 to each Crushers top side
 end
 
 every 1 ticks do
@@ -79,7 +79,7 @@ end
 every 20 ticks do
     input from Compressor_Input
     output osmium_ingot to each Compressors west side
-    output to each Compressors top side
+    output to each Compressors round robin by block top side
 end
 
 
