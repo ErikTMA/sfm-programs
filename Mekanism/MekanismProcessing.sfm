@@ -61,7 +61,7 @@ end
 -- Enrichers
 every 20 ticks do
     input from Enrichers_Input
-    output 32 to each Enrichers top side
+    output 9 to each Enrichers top side
 end
 
 -- Crushers
