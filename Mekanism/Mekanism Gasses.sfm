@@ -1,0 +1,47 @@
+name "Mekanism Gasses"
+
+-- Oxygen/Hydrogen
+every 20 ticks do
+    input fluid:minecraft:water from Water_Input bottom side
+    output fluid:minecraft:water to each Electrolytic_Separators top side
+end
+
+-- Sulfur Dioxide
+every 20 ticks do
+    input from "Input"
+    output sulfur_dust to each Sulfuric_Dioxide_Oxydizers top side
+    output fluorite_gem to each Hydrofluoric_Acid_Dissolutions top side
+    output yellow_cake_uranium to each Uranium_Oxide_Oxidizers top side
+end
+
+-- Water Vapor
+every 20 ticks do
+    input fluid:minecraft:water from Water_Input bottom side
+    output fluid:minecraft:water to each Vapor_Deconcentrator top side
+end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- Power
+every 1 ticks do
+    input fe:: from Power_Input bottom side
+    output fe:: to each Electrolytic_Separators, Sulfuric_Dioxide_Oxydizers, Vapor_Deconcentrator, Sulfur_Trioxide_Infusers, Sulfuric_Acid_Infusers, Hydrofluoric_Acid_Dissolutions, Uranium_Oxide_Oxidizers top side
+end
+
+-- Output
+every 20 ticks do
+    input gas:: from Gas_buffer round robin by block top side
+    output gas:: to each Gas_Output bottom side
+end

@@ -1,0 +1,26 @@
+name "IF Disenchanter"
+
+every 20 ticks do
+    input from Book_Input
+    output to Enchantment_Extractor top side
+    output to Enchantment_Factory top side
+forget
+    input 1 from Item_Input
+    output to Enchantment_Extractor top side
+    output to Apotheosis_Salvager top side
+    output to Salvager
+    output to Trashcan
+forget
+    input from Enchantment_Extractor, Salvager, Apotheosis_Salvager, Enchantment_Factory bottom side
+    output to "Output"
+end
+
+every 1 ticks do
+    input fe:: from Power_Input bottom side
+    output fe:: to each Enchantment_Extractor, Enchantment_Factory top side
+end
+
+every redstone pulse do
+    input from each Salvager slots 0
+    output to Trashcan
+end

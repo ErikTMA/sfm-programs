@@ -14,4 +14,8 @@ FORGET
         output 1 *augment* to Infusion_Altar
         output 1 except *augment* to each Infusion_Pedestals
     end
+    if MysticalAggriculture_Input has eq 1 insanium_farmland then
+        output 1 insanium_farmland to Infusion_Altar
+        output 1 except insanium_farmland to each Infusion_Pedestals
+    end
 end

@@ -1,42 +1,3 @@
---enriched_diamond: 80
---diamond_dust: 10
---- alloy_infused = 20
---- dust_obsidian = 10
-
---enriched_carbon: 80
---charcoal_block: 180
---coal: 10
---dust_coal: 10
---charcoal: 20
---dust_charcoal: 20
---- gold_dust = 10
---- iron_block_1x = 1620
---- iron_ingot = 10
---- enriched_iron = 10
-
---enriched_redstone: 80
---redstone_block: 90
---redstone: 10
---- iron_ingot = 10
---- quartz = 80
---- osmium_ingot = 20
-
---enriched_refined_obsidian: 80
---dust_refined_obsidian: 10
---- alloy_reinforced = 40
-
---enriched_gold: 80
---dust_gold: 10
---- netherite_scrap = 40
---- blackstone = 100
-
---enriched_tin: 80
---tin_dust: 10
---- copper_dust = 10
---- copper_ingot = 10
-
-
-
 name "Mekanism Processing"
 
 -- Infusers
@@ -60,26 +21,21 @@ end
 
 -- Enrichers
 every 20 ticks do
-    input from Enrichers_Input
+    input from Enrichers_Input round robin by block
     output 9 to each Enrichers top side
 end
 
 -- Crushers
 every 20 ticks do
-    input from Crushers_Input
+    input from Crushers_Input round robin by block
     output 9 to each Crushers top side
-end
-
-every 1 ticks do
-    input fe:: from Power_Input bottom side
-    output fe:: to each Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, Enrichers, Crushers, Compressors bottom side
 end
 
 -- Compressors
 every 20 ticks do
     input from Compressor_Input
     output osmium_ingot to each Compressors west side
-    output to each Compressors round robin by block top side
+    output to each Compressors top side
 end
 
 
@@ -92,4 +48,10 @@ end
 every 20 ticks do
     input from each Enrichers, Crushers, Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, Compressors bottom side
     output to "Output"
+end
+
+-- Power
+every 1 ticks do
+    input fe:: from Power_Input bottom side
+    output fe:: to each Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, Enrichers, Crushers, Compressors bottom side
 end
