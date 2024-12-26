@@ -1,4 +1,6 @@
 -- You need to block the pattern provider, so it only inputs a single craft at a time to the input chest.
+-- Seems to not be working, due to pedestals and vessels not being detected as inventories.
+
 name "Mystical Aggriculture Awakened Infusion"
 
 every 20 ticks do
