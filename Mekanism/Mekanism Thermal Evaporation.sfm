@@ -1,0 +1,24 @@
+name "Mekanism Thermal Evaporation"
+
+every 1 ticks do
+    input fe:: from Power top side
+    output fe:: to each Resistive_Heaters south side
+end
+
+-- fill up
+every 20 ticks do
+    input from each Water bottom side
+    output to each Water_Thermal_Evaporators
+forget
+    input from each Brine bottom side
+    output to each Brine_Thermal_Evaporators
+end
+
+-- Output
+every 20 ticks do
+    input from each Brine_Thermal_Evaporators
+    output to each "GasOutput"
+forget
+    input from each Water_Thermal_Evaporators
+    output to each Brine top side
+end

@@ -33,15 +33,25 @@ end
 
 
 
-
 -- Power
 every 1 ticks do
     input fe:: from Power_Input bottom side
-    output fe:: to each Electrolytic_Separators, Sulfuric_Dioxide_Oxydizers, Vapor_Deconcentrator, Sulfur_Trioxide_Infusers, Sulfuric_Acid_Infusers, Hydrofluoric_Acid_Dissolutions, Uranium_Oxide_Oxidizers top side
+    output fe:: to each Electrolytic_Separators, Sulfuric_Dioxide_Oxydizers, Vapor_Deconcentrator, Sulfur_Trioxide_Infusers, Sulfuric_Acid_Infusers, Hydrofluoric_Acid_Dissolutions, Uranium_Oxide_Oxidizers, Brine_Seperators, Hydrogen_Chloride_Infusers, Uranium_Hexafluoride_Infusers top side
+    output fe:: to each Fissile_Fuel_Centrifuges bottom side
 end
 
 -- Output
 every 20 ticks do
     input gas:: from Gas_buffer round robin by block top side
     output gas:: to each Gas_Output bottom side
+forget
+    input gas:: from Gas_buffer round robin by block top side
+    output gas:: to each Gas_Output bottom side
+forget
+    input gas:: from Gas_buffer round robin by block top side
+    output gas:: to each Gas_Output bottom side
+forget
+    input gas:: from Gas_buffer round robin by block top side
+    output gas:: to each Gas_Output bottom side
 end
+

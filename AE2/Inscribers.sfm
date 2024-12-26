@@ -13,15 +13,17 @@ every 20 ticks do
            10 gold_ingot,
            10 diamond,
            10 silicon,
+           10 entro_crystal,
+           10 charged_redstone,
            10 sky_steel_ingot to each Print_Inscribers SLOTS 2,6,10,14
-    output 4 "printed_(?!silicon\b)\w+" to each Circuit_Inscribers SLOTS 1, 5, 9, 13
+    output 4 "printed_(?!silicon\b)\w+|concurrent_processor_print" to each Circuit_Inscribers SLOTS 1, 5, 9, 13
     output 4 "(redstone|fluix_dust|ender_pearl)" to each Circuit_Inscribers SLOTS 2, 6, 10, 14
     output 4 printed_silicon to each Circuit_Inscribers SLOTS 0, 4, 8, 12
     output 1 *press* to each Print_Inscribers SLOTS 1,5,9,13
 
 FORGET
 
-    input printed_*,ender_dust from Print_Inscribers north side
+    input printed_*,ender_dust,concurrent_processor_print from Print_Inscribers north side
     output to "Output"
 
 FORGET

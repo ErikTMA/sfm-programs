@@ -1,0 +1,15 @@
+-- You need to block the pattern provider, so it only inputs a single craft at a time to the input chest.
+name "Mystical Aggriculture Awakened Infusion"
+
+every 20 ticks do
+    input from Infusion_Altar
+    output to "Output"
+FORGET
+    input from MysticalAggriculture_Input
+    if MysticalAggriculture_Input has eq 1 *seed_base* then
+        output 1 lily_pad,
+        1 supremium_* to Infusion_Altar
+        output 1 except "(lily_pad|supremium_*|fire_essence|water_essence|earth_essence|air_essence)" to each Infusion_Pedestals
+        output "(fire_essence|water_essence|earth_essence|air_essence)" to each Essense_Vessels
+    end
+end

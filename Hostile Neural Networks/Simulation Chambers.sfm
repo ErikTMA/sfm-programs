@@ -7,7 +7,9 @@ every 20 ticks do
 FORGET
     input from each Simulation_Chambers
     output to "Output"
-FORGET
+end
+
+every 1 ticks do
     -- remember to change the side to the correct one in your setup
     input fe:: from Power_Input north side
     output fe:: to each Simulation_Chambers
