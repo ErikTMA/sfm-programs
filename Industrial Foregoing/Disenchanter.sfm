@@ -9,12 +9,13 @@ every 20 ticks do
     output to Enchantment_Factory top side
 forget
     input 1 from Item_Input
-    output to Enchantment_Extractor top side
+    output to each Enchantment_Extractor top side
+-- Since allthemodium, chainmail, and knives can't be salvaged, they are sent to the trashcan.
+    output allthemodium_*,chainmail_*,*_knife to Trashcan
     output to Apotheosis_Salvager top side
     output to Salvager
     output to Trashcan
 forget
--- removed salvager from the input, since it's not recognized as an inventory; change this when/if it's fixed
     input from Enchantment_Extractor, Apotheosis_Salvager, Enchantment_Factory bottom side
     output to "Output"
 end
