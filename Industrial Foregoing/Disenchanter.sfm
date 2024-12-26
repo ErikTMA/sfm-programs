@@ -1,3 +1,6 @@
+-- Since Silent Gears Salvager is not recognized as an inventory, I set a chest to be the salvager, then modular router to take from the chest and output to a hopper above the salvager.
+-- Hopper below the salvager is the output, which another modular router takes from and outputs to the output chest.
+
 name "IF Disenchanter"
 
 every 20 ticks do
@@ -11,7 +14,8 @@ forget
     output to Salvager
     output to Trashcan
 forget
-    input from Enchantment_Extractor, Salvager, Apotheosis_Salvager, Enchantment_Factory bottom side
+-- removed salvager from the input, since it's not recognized as an inventory; change this when/if it's fixed
+    input from Enchantment_Extractor, Apotheosis_Salvager, Enchantment_Factory bottom side
     output to "Output"
 end
 
