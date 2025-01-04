@@ -11,7 +11,60 @@ forget
     input 1 from Item_Input
     output to each Enchantment_Extractor top side
 -- Since allthemodium, chainmail, and knives can't be salvaged, they are sent to the trashcan.
-    output allthemodium_*,chainmail_*,*_knife to Trashcan
+    output allthemodium_*,chainmail_*,farmersdelight:*_knife,mekanismtools:*,fishing_rod,everythingcopper:*,sophisticatedbackpacks:*backpack,wooden_* to Trashcan
+    output to Apotheosis_Salvager top side
+    output to Salvager
+    output to Trashcan
+forget
+    input from Enchantment_Extractor, Apotheosis_Salvager, Enchantment_Factory bottom side
+    output to "Output"
+end
+
+-- Have 2 threads running
+every 20 ticks do
+    input from Book_Input
+    output to Enchantment_Extractor top side
+    output to Enchantment_Factory top side
+forget
+    input 1 from Item_Input
+    output to each Enchantment_Extractor top side
+-- Since allthemodium, chainmail, and knives can't be salvaged, they are sent to the trashcan.
+    output allthemodium_*,chainmail_*,farmersdelight:*_knife,mekanismtools:*,fishing_rod,everythingcopper:*,sophisticatedbackpacks:*backpack,wooden_* to Trashcan
+    output to Apotheosis_Salvager top side
+    output to Salvager
+    output to Trashcan
+forget
+    input from Enchantment_Extractor, Apotheosis_Salvager, Enchantment_Factory bottom side
+    output to "Output"
+end
+
+every 20 ticks do
+    input from Book_Input
+    output to Enchantment_Extractor top side
+    output to Enchantment_Factory top side
+forget
+    input 1 from Item_Input
+    output to each Enchantment_Extractor top side
+-- Since allthemodium, chainmail, and knives can't be salvaged, they are sent to the trashcan.
+    output allthemodium_*,chainmail_*,farmersdelight:*_knife,mekanismtools:*,fishing_rod,everythingcopper:*,sophisticatedbackpacks:*backpack,wooden_* to Trashcan
+    output to Apotheosis_Salvager top side
+    output to Salvager
+    output to Trashcan
+forget
+    input from Enchantment_Extractor, Apotheosis_Salvager, Enchantment_Factory bottom side
+    output to "Output"
+end
+
+-- Have 2 threads running
+every 20 ticks do
+    input from Book_Input
+    output to Enchantment_Extractor top side
+    output to Enchantment_Factory top side
+forget
+    input 1 from Item_Input
+    output to each Enchantment_Extractor top side
+-- Since allthemodium, chainmail, and knives can't be salvaged, they are sent to the trashcan.
+    output allthemodium_*,chainmail_*,farmersdelight:*_knife,mekanismtools:*,fishing_rod,everythingcopper:*,sophisticatedbackpacks:*backpack,wooden_* to Trashcan
     output to Apotheosis_Salvager top side
     output to Salvager
     output to Trashcan

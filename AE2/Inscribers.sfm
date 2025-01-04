@@ -15,6 +15,7 @@ every 20 ticks do
            10 silicon,
            10 entro_crystal,
            10 charged_redstone,
+           10 quantum_alloy,
            10 sky_steel_ingot to each Print_Inscribers SLOTS 2,6,10,14
     output 4 "printed_(?!silicon\b)\w+|concurrent_processor_print" to each Circuit_Inscribers SLOTS 1, 5, 9, 13
     output 4 "(redstone|fluix_dust|ender_pearl)" to each Circuit_Inscribers SLOTS 2, 6, 10, 14
