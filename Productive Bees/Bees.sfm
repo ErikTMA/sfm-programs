@@ -1,0 +1,33 @@
+name "Productive Bees"
+
+every 20 ticks do
+    input from Bee_Hives
+    output configurable_honeycomb, configurable_comb to each Centrifuges
+    output except configurable_honeycomb, configurable_comb to "Output"
+forget
+    input from Inputs
+    output 1 glass_bottle to each Bee_Hives
+    output 1 bee_cage to each Breeders
+    output 1 honey_treat to each Incubators
+forget
+    input from each Centrifuges
+    output to "Output"
+forget
+    input from Breeders
+    output to Incubators
+forget
+    input from Incubators
+    output to "Output"
+end
+
+every 20 ticks do
+    input fluid:: from Centrifuges
+    output fluid:: to Fluid_Output
+end
+
+every 1 ticks do
+    input fe:: from Power_Input
+    output fe:: to each Centrifuges
+    output fe:: to each Breeders
+    output fe:: to each Incubators
+end

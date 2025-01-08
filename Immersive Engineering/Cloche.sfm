@@ -1,0 +1,17 @@
+name "Gloche Farming"
+
+every 20 ticks do
+    input fluid:minecraft:water from Water_Input
+    output fluid:minecraft:water to each Cloches
+forget
+    input from Fertilizer_Input
+    output to each Cloches
+forget
+    input from Cloches_Output south side
+    output to "Output"
+end
+
+every 1 ticks do
+    input fe:: from Power_Input
+    output fe:: to each Cloches
+end
