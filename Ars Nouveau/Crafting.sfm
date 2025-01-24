@@ -1,0 +1,30 @@
+name "Ars Nouveau Crafting"
+
+every 20 ticks do
+    input from Imbuement_Input
+    output 1 except
+        stick,
+        ars_nouveau:dominion_wand,
+         to each Imbuement_Platforms
+    output to Imbuement_Chamber each side
+forget
+    if Enchanting_Input has > 1 piglich_heart
+    then
+        input from Enchanting_Input
+        output 1 except source_gem to each Enchanting_Platforms
+        output 1 source_gem to Enchanting_Apparatus
+    else
+        input from Enchanting_Input
+        output 1 except
+            stick,
+            ars_nouveau:dominion_wand,
+            ars_nouveau:relay,
+            ars_nouveau:source_jar,
+            ae2:item_cell_housing,
+            to each Enchanting_Platforms
+        output to Enchanting_Apparatus each side
+    end
+forget
+    input from Enchanting_Apparatus, Imbuement_Chamber
+    output to "Output"
+end
