@@ -9,27 +9,27 @@ every 20 ticks do
 
     input from Inscribers_Input
 
-    output 10 certus_quartz_crystal,
-           10 gold_ingot,
-           10 diamond,
-           10 silicon,
-           10 entro_crystal,
-           10 charged_redstone,
-           10 quantum_alloy,
-           10 sky_steel_ingot to each Print_Inscribers SLOTS 2,6,10,14
+    output 12 certus_quartz_crystal,
+           12 gold_ingot,
+           12 diamond,
+           12 silicon,
+           12 entro_crystal,
+           12 charged_redstone,
+           12 quantum_alloy,
+           12 sky_steel_ingot to each Print_Inscribers SLOTS 2,6,10,14
     output 4 "printed_(?!silicon\b)\w+|concurrent_processor_print" to each Circuit_Inscribers SLOTS 1, 5, 9, 13
     output 4 "(redstone|fluix_dust|ender_pearl)" to each Circuit_Inscribers SLOTS 2, 6, 10, 14
     output 4 printed_silicon to each Circuit_Inscribers SLOTS 0, 4, 8, 12
     output 1 *press* to each Print_Inscribers SLOTS 1,5,9,13
+end
 
-FORGET
-
+every 20 ticks do
     input printed_*,ender_dust,concurrent_processor_print from Print_Inscribers north side
     output to "Output"
+end
 
-FORGET
-
-    input *processor* from Circuit_Inscribers north side
+every 20 ticks do
+    input *processor* from Crystal_Assemblers
     output to "Output"
 end
 
@@ -51,7 +51,6 @@ every 200 ticks do
         input from Circuit_Inscribers
         output to Inscribers_Buffer
     end
-
 FORGET
         input from Inscribers_Buffer
         output to Inscribers_Input

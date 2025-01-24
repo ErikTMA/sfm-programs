@@ -1,0 +1,33 @@
+-- Tested with 16 inscribers, 8 for printing and 8 for circuits
+-- The inscribers were both AE2 and ExtendedAE
+-- with this, ae2 recipes must be split, 1 for printed and 1 for circuits
+-- if you want 1 gold, 1 silicon and 1 redstone to become a logic circuit, you need to change the ouput from Print_Inscribers from "Output" to Inscribers_Inpu t
+-- This also uses the "universal press" from KubeJS. If you don't have that, you need to add logic for which inscriber to use for each printed item
+name "AE2 Extended Printing"
+
+every 20 ticks do
+    input from Inscribers_Input
+
+    output *_block to each Circuit_Slicers TOP SIDE
+    output 64 "printed_(?!silicon\b)\w+|concurrent_processor_print" to each Crystal_Assemblers TOP SIDE
+    output 64 "(redstone|fluix_dust|ender_pearl)" to each Crystal_Assemblers TOP SIDE
+    output 64 printed_silicon to each Crystal_Assemblers TOP SIDE
+end
+
+every 20 ticks do
+    input from Circuit_Slicers BOTTOM SIDE
+    output to "Output"
+end
+every 20 ticks do
+    input from Crystal_Assemblers BOTTOM SIDE
+    output to "Output"
+end
+
+every 200 ticks do
+    -- cleanup partially filled assemblers
+    if some Crystal_Assemblers TOP SIDE has < 1
+    then
+        input from Crystal_Assemblers
+        output to Inscribers_Input
+    end
+end
