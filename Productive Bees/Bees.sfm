@@ -2,7 +2,8 @@ name "Productive Bees"
 
 every 20 ticks do
     input from Bee_Hives
-    output configurable_honeycomb, configurable_comb to each Centrifuges
+    output configurable_honeycomb, configurable_comb, productivebees:comb_* to each Centrifuges
+    output gene to each Gene_Indexers
     output except configurable_honeycomb, configurable_comb to "Output"
 forget
     input from Inputs
@@ -10,13 +11,10 @@ forget
     output 1 bee_cage to each Breeders
     output 1 honey_treat to each Incubators
 forget
-    input from each Centrifuges
-    output to "Output"
-forget
     input from Breeders
     output to Incubators
 forget
-    input from Incubators
+    input from Centrifuges, Incubators, Full_Genes
     output to "Output"
 end
 
