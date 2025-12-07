@@ -8,10 +8,11 @@ every 20 ticks do
     input from Infusion_Extra_Input
     output enriched_diamond, diamond_dust to each Diamond_Infusers west side
     output enriched_carbon, charcoal_block, coal, dust_coal, charcoal, dust_charcoal to each Carbon_Infusers west side
-    output enriched_redstone, redstone_block, "redstone" to each Redstone_Infusers west side
+    output enriched_redstone, redstone_block, "redstone" to each Redstone_dInfusers west side
     output enriched_refined_obsidian, dust_refined_obsidian to each Refined_Obsidian_Infusers west side
     output enriched_gold, dust_gold to each Gold_Infusers west side
     output enriched_tin, tin_dust to each Tin_Infusers west side
+    output bio_fuel to each BioFuel_Infusers west side
 forget
     input from Infusion_Input
     output alloy_infused, dust_obsidian to each Diamond_Infusers top side
@@ -20,6 +21,7 @@ forget
     output alloy_reinforced to each Refined_Obsidian_Infusers top side
     output netherite_scrap, blackstone to each Gold_Infusers top side
     output copper_dust, copper_ingot to each Tin_Infusers top side
+    output clay_ball to each BioFuel_Infusers top side
 end
 
 -- Enrichers
@@ -77,24 +79,24 @@ end
 
 -- Collect
 every 20 ticks do
-    input from each Enrichers, Crushers, Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, Compressors, Purifiers, Injectors bottom side
+    input from each Enrichers, Crushers, Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, BioFuel_Infusers, Compressors, Purifiers, Injectors bottom side
     output to "Output"
 end
 
 
 every 20 ticks do
-    input from each Enrichers, Crushers, Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, Compressors, Purifiers, Injectors bottom side
+    input from each Enrichers, Crushers, Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, BioFuel_Infusers, Compressors, Purifiers, Injectors bottom side
     output to "Output"
 end
 
 
 every 20 ticks do
-    input from each Enrichers, Crushers, Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, Compressors, Purifiers, Injectors bottom side
+    input from each Enrichers, Crushers, Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, BioFuel_Infusers, Compressors, Purifiers, Injectors bottom side
     output to "Output"
 end
 
 -- Power
 every 1 ticks do
     input fe:: from Power_Input bottom side
-    output fe:: to each Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, Enrichers, Crushers, Compressors, Purifiers, Injectors bottom side
+    output fe:: to each Diamond_Infusers, Carbon_Infusers, Redstone_Infusers, Refined_Obsidian_Infusers, Gold_Infusers, Tin_Infusers, BioFuel_Infusers, Enrichers, Crushers, Compressors, Purifiers, Injectors bottom side
 end

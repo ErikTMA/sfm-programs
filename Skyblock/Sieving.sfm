@@ -1,31 +1,44 @@
-name "Sieve the world"
+name "Sieve the world - Consolidated"
 
 every 20 ticks do
-    input from Sieves_Input
-    output cobblestone to each Cobblestone_Hammers
-    output soul_sand to each SoulSand_Sieves
-    output netherrack to each Netherrack_Hammers
-    output cobbled_deepslate to each CobbledDeepslate_Hammers
-    output dirt to each Dirt_Sieves
-    output blackstone to each Blackstone_Hammers
-    output moss_block to each Moss_Sieves
-    output end_stone to each EndStone_Hammers
+    -- Input from hammer input chest and distribute to hammers
+    input from Input_Hammer
+    output retain 20 each to each Hammers
 end
+
 every 20 ticks do
-    input from each Sieves_Output
-    output *chunk* to each Chunk_Processing_Compactor
-    output *pebble* to each Pebble_Processing_Compactor
-    output iron_nugget to each Nugget_Processing_Compactor
-    output to each "Output"
-forget
-    input from each Chunk_Processing_Compactor, Pebble_Processing_Compactor, Nugget_Processing_Compactor
-    output iron_ingot, *_ore,blackstone,cobbled_deepslate,cobblestone to each "Output"
+    -- Input from sieve input chest and distribute to sieves
+    input from Input_Sieve
+    output retain 20 each to each Sieves
 end
 
+every 20 ticks do
+    -- Collect from dedicated output chests of sieves and hammers
+    input from Sieves_Output_Chest, Hammers_Output_Chest
+    
+    -- Priority-based output to compactors (fill first, then next, etc.)
+    output *chunk*, *pebble* to Compactors_Input
+    
+    -- Other materials go directly to output
+    output * to Output_Chest
+end
 
+every 20 ticks do
+    input from Compactors_Input
+    output * to Compactors
+end
+
+every 20 ticks do
+    -- Process compactors with priority system
+    -- Collect from dedicated output chests of compactors
+    input from Compactors_Output_Chest
+    
+    -- Output processed materials to main output chest
+    output * to Output_Chest
+end
 
 every 1 ticks do
+    -- Power distribution to all machines
     input fe:: from Power_Input east side
-    output fe:: to each Hammers
-    output fe:: to each Sieves
+    output fe:: to each Hammers, Sieves, Compactors
 end
